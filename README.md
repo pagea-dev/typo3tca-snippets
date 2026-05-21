@@ -12,6 +12,18 @@ Download for VSCodium [from Open-VSX.org](https://open-vsx.org/extension/pagea-d
 
 All snippets are compatible with TYPO3 13 and 14.
 
+### Structure
+
+| Prefix | Description |
+|---|---|
+| `tcafull` | Complete TCA base structure for a new table |
+| `tcaoverride` | TCA override for existing table (e.g. tt_content) |
+| `tcactrl` | ctrl block |
+| `tcatypes` | types block with showitem and palette syntax |
+| `tcapalettes` | palettes definition |
+| `tcacolumns` | Empty columns scaffold |
+| `tcacolumnwrapper` | Column definition with label, exclude, l10n_mode and config placeholder |
+
 ### Text & Input
 
 | Prefix | Description |
@@ -29,6 +41,10 @@ All snippets are compatible with TYPO3 13 and 14.
 | `tcalink` | Link field |
 | `tcajson` | JSON editor field |
 | `tcauuid` | UUID field |
+| `tcanone` | None field (read-only display) |
+| `tcapassthrough` | Passthrough field (invisible, stores data without UI) |
+| `tcauser` | User field with custom renderType |
+| `tcaflexform` | FlexForm field |
 
 ### Checkboxes
 
@@ -47,17 +63,33 @@ All snippets are compatible with TYPO3 13 and 14.
 | `tcaselectsingle` | Single select field (static items) |
 | `tcaselectmulti` | Multi-select side-by-side field (static items) |
 | `tcaselectside` | Multi-select side-by-side field (DB relation) |
+| `tcaselectmm` | Select field with MM (many-to-many) relation |
+| `tcaselecttree` | Select tree field |
+| `tcaradio` | Radio buttons field |
 | `tcacategory` | Category tree field |
 | `tcafalimage` | FAL image field |
 | `tcafile` | FAL file field (configurable allowed types) |
 | `tcagroup` | Group field (DB relation) |
 | `tcainline` | Inline (IRRE) field |
 
+### Standard / System Fields
+
+| Prefix | Description |
+|---|---|
+| `tcahidden` | Standard hidden field |
+| `tcastarttime` | Standard starttime field |
+| `tcaendtime` | Standard endtime field |
+| `tcafegroup` | Standard fe_group field |
+| `tcasyscat` | sys_category relation field |
+
 ### Misc
 
 | Prefix | Description |
 |---|---|
 | `tcadisplaycond` | Display condition |
+| `tcal10nmode` | l10n_mode for translation handling |
+| `tcasearchfields` | searchFields entry for ctrl |
+| `tcasecurity` | security array for ctrl |
 | `tcauniversal` | Field with config inherited from tt_content |
 
 ## Requirements

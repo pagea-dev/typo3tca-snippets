@@ -2,7 +2,7 @@
   "name": "typo3tca-snippets",
   "displayName": "TYPO3 TCA Snippets Extension",
   "description": "TYPO3 TCA Snippets for VSCode/VSCodium",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "pagea-dev",
   "icon": "images/icon.png",
   "license": "MIT",

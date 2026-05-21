@@ -1,4 +1,179 @@
 {
+
+  // ─── STRUCTURE ───────────────────────────────────────────────────────────────
+
+  "TCA Full Table": {
+    "prefix": "tcafull",
+    "body": [
+      "<?php",
+      "",
+      "declare(strict_types=1);",
+      "",
+      "return [",
+      "    'ctrl' => [",
+      "        'title' => 'LLL:EXT:${1:myext}/Resources/Private/Language/locallang_db.xlf:${2:tx_myext_domain_model_item}',",
+      "        'label' => '${3:title}',",
+      "        'tstamp' => 'tstamp',",
+      "        'crdate' => 'crdate',",
+      "        'delete' => 'deleted',",
+      "        'sortby' => 'sorting',",
+      "        'versioningWS' => true,",
+      "        'iconfile' => 'EXT:${1}/Resources/Public/Icons/${2}.svg',",
+      "        'origUid' => 't3_origuid',",
+      "        'searchFields' => '${3}',",
+      "        'languageField' => 'sys_language_uid',",
+      "        'transOrigPointerField' => 'l10n_parent',",
+      "        'transOrigDiffSourceField' => 'l10n_diffsource',",
+      "        'translationSource' => 'l10n_source',",
+      "        'enablecolumns' => [",
+      "            'disabled' => 'hidden',",
+      "            'starttime' => 'starttime',",
+      "            'endtime' => 'endtime',",
+      "            'fe_group' => 'fe_group',",
+      "        ],",
+      "    ],",
+      "    'types' => [",
+      "        '1' => [",
+      "            'showitem' => '",
+      "                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,",
+      "                --palette--;;general,",
+      "                ${4:title},",
+      "                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,",
+      "                --palette--;;hidden,",
+      "                --palette--;;access,",
+      "            ',",
+      "        ],",
+      "    ],",
+      "    'palettes' => [",
+      "        'general' => ['showitem' => '${3}'],",
+      "        'hidden'  => ['showitem' => 'hidden'],",
+      "        'access'  => ['showitem' => 'starttime, endtime, --linebreak--, fe_group'],",
+      "    ],",
+      "    'columns' => [",
+      "        ${0}",
+      "    ],",
+      "];",
+      ""
+    ],
+    "description": "Complete TCA base structure for a new table"
+  },
+
+  "TCA Override": {
+    "prefix": "tcaoverride",
+    "body": [
+      "\\TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility::addTCAcolumns(",
+      "    '${1:tt_content}',",
+      "    [",
+      "        '${2:fieldname}' => [",
+      "            'exclude' => true,",
+      "            'label' => '${3:label}',",
+      "            'config' => [",
+      "                ${4}",
+      "            ],",
+      "        ],",
+      "    ]",
+      ");",
+      "",
+      "\\TYPO3\\CMS\\Core\\Utility\\ExtensionManagementUtility::addToAllTCAtypes(",
+      "    '${1}',",
+      "    '${2}',",
+      "    '',",
+      "    'after:${5:header}'",
+      ");"
+    ],
+    "description": "TCA override for existing table (e.g. tt_content)"
+  },
+
+  "TCA ctrl": {
+    "prefix": "tcactrl",
+    "body": [
+      "'ctrl' => [",
+      "    'title' => 'LLL:EXT:${1:myext}/Resources/Private/Language/locallang_db.xlf:${2:tx_myext_domain_model_item}',",
+      "    'label' => '${3:title}',",
+      "    'label_alt' => '${4:}',",
+      "    'tstamp' => 'tstamp',",
+      "    'crdate' => 'crdate',",
+      "    'delete' => 'deleted',",
+      "    'sortby' => 'sorting',",
+      "    'versioningWS' => true,",
+      "    'iconfile' => 'EXT:${1}/Resources/Public/Icons/${2}.svg',",
+      "    'origUid' => 't3_origuid',",
+      "    'searchFields' => '${3}',",
+      "    'languageField' => 'sys_language_uid',",
+      "    'transOrigPointerField' => 'l10n_parent',",
+      "    'transOrigDiffSourceField' => 'l10n_diffsource',",
+      "    'translationSource' => 'l10n_source',",
+      "    'enablecolumns' => [",
+      "        'disabled' => 'hidden',",
+      "        'starttime' => 'starttime',",
+      "        'endtime' => 'endtime',",
+      "        'fe_group' => 'fe_group',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA ctrl block"
+  },
+
+  "TCA types": {
+    "prefix": "tcatypes",
+    "body": [
+      "'types' => [",
+      "    '${1:1}' => [",
+      "        'showitem' => '",
+      "            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,",
+      "            --palette--;;${2:general},",
+      "            ${3:title},",
+      "            --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,",
+      "            --palette--;;hidden,",
+      "            --palette--;;access,",
+      "        ',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA types block with showitem and palette syntax"
+  },
+
+  "TCA palettes": {
+    "prefix": "tcapalettes",
+    "body": [
+      "'palettes' => [",
+      "    '${1:general}' => ['showitem' => '${2:title}'],",
+      "    'hidden'       => ['showitem' => 'hidden'],",
+      "    'access'       => ['showitem' => 'starttime, endtime, --linebreak--, fe_group'],",
+      "],"
+    ],
+    "description": "TCA palettes definition"
+  },
+
+  "TCA columns scaffold": {
+    "prefix": "tcacolumns",
+    "body": [
+      "'columns' => [",
+      "    ${0}",
+      "],"
+    ],
+    "description": "Empty TCA columns scaffold"
+  },
+
+  "TCA Column Wrapper": {
+    "prefix": "tcacolumnwrapper",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => ${2|true,false|},",
+      "    'label' => '${3:label}',",
+      "    'description' => '${4:}',",
+      "    'l10n_mode' => '${5|exclude,prefixLangTitle|}',",
+      "    'config' => [",
+      "        ${0}",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA column definition with label, exclude, l10n_mode and config placeholder"
+  },
+
+
+  // ─── TEXT & INPUT ─────────────────────────────────────────────────────────────
+
   "TCA Input": {
     "prefix": "tcainput",
     "body": [
@@ -235,6 +410,71 @@
     "description": "TCA UUID field"
   },
 
+  "TCA None (read-only)": {
+    "prefix": "tcanone",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'label' => '${2:label}',",
+      "    'config' => [",
+      "        'type' => 'none',",
+      "        'format' => '${3|string,date,datetime,time,timesec,year,int,float|}',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA none field (read-only display)"
+  },
+
+  "TCA Passthrough": {
+    "prefix": "tcapassthrough",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'label' => '${2:label}',",
+      "    'config' => [",
+      "        'type' => 'passthrough',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA passthrough field (invisible, stores data without UI)"
+  },
+
+  "TCA User (custom renderType)": {
+    "prefix": "tcauser",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'label' => '${2:label}',",
+      "    'config' => [",
+      "        'type' => 'user',",
+      "        'renderType' => '${3:myCustomElement}',",
+      "        'parameters' => [",
+      "            '${4:key}' => '${5:value}',",
+      "        ],",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA user field with custom renderType"
+  },
+
+  "TCA FlexForm": {
+    "prefix": "tcaflexform",
+    "body": [
+      "'${1:pi_flexform}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'config' => [",
+      "        'type' => 'flex',",
+      "        'ds_pointerField' => '${3:list_type,CType}',",
+      "        'ds' => [",
+      "            '${4:*,your_plugin}' => 'FILE:EXT:${5:myext}/Configuration/FlexForms/${6:FlexForm.xml}',",
+      "        ],",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA FlexForm field"
+  },
+
+
+  // ─── CHECKBOXES ───────────────────────────────────────────────────────────────
+
   "TCA Checkbox": {
     "prefix": "tcacheck",
     "body": [
@@ -352,6 +592,9 @@
     "description": "TCA checkbox labeled toggle"
   },
 
+
+  // ─── SELECT & RELATIONS ───────────────────────────────────────────────────────
+
   "TCA Select Single": {
     "prefix": "tcaselectsingle",
     "body": [
@@ -415,6 +658,76 @@
       "],"
     ],
     "description": "TCA multi-select side-by-side field with DB relation"
+  },
+
+  "TCA Select MM": {
+    "prefix": "tcaselectmm",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'selectMultipleSideBySide',",
+      "        'foreign_table' => '${4:tx_myextension_domain_model_item}',",
+      "        'foreign_table_where' => 'AND {#${4}}.deleted = 0 AND {#${4}}.hidden = 0',",
+      "        'MM' => '${5:tx_myextension_item_item_mm}',",
+      "        'size' => 10,",
+      "        'maxitems' => 999,",
+      "        'autoSizeMax' => 10,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA select field with MM (many-to-many) relation"
+  },
+
+  "TCA Select Tree": {
+    "prefix": "tcaselecttree",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'selectTree',",
+      "        'foreign_table' => '${4:pages}',",
+      "        'foreign_table_where' => 'ORDER BY ${4}.sorting',",
+      "        'size' => ${5:10},",
+      "        'maxitems' => ${6:999},",
+      "        'treeConfig' => [",
+      "            'parentField' => '${7:pid}',",
+      "            'appearance' => [",
+      "                'showHeader' => true,",
+      "                'expandAll' => false,",
+      "            ],",
+      "        ],",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA select tree field"
+  },
+
+  "TCA Radio Buttons": {
+    "prefix": "tcaradio",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'radioButtons',",
+      "        'items' => [",
+      "            ['label' => 'Option A', 'value' => '0'],",
+      "            ['label' => 'Option B', 'value' => '1'],",
+      "        ],",
+      "        'default' => '0',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA radio buttons field"
   },
 
   "TCA Category": {
@@ -511,12 +824,145 @@
     "description": "TCA inline (IRRE) field"
   },
 
+
+  // ─── STANDARD / SYSTEM FIELDS ─────────────────────────────────────────────────
+
+  "TCA hidden field": {
+    "prefix": "tcahidden",
+    "body": [
+      "'hidden' => [",
+      "    'exclude' => true,",
+      "    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',",
+      "    'config' => [",
+      "        'type' => 'check',",
+      "        'renderType' => 'checkboxToggle',",
+      "        'items' => [",
+      "            [",
+      "                'label' => '',",
+      "                'invertStateDisplay' => true,",
+      "            ],",
+      "        ],",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA standard hidden field"
+  },
+
+  "TCA starttime field": {
+    "prefix": "tcastarttime",
+    "body": [
+      "'starttime' => [",
+      "    'exclude' => true,",
+      "    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',",
+      "    'config' => [",
+      "        'type' => 'datetime',",
+      "        'format' => 'datetime',",
+      "        'default' => 0,",
+      "    ],",
+      "    'l10n_mode' => 'exclude',",
+      "    'l10n_display' => 'defaultAsReadonly',",
+      "],"
+    ],
+    "description": "TCA standard starttime field"
+  },
+
+  "TCA endtime field": {
+    "prefix": "tcaendtime",
+    "body": [
+      "'endtime' => [",
+      "    'exclude' => true,",
+      "    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',",
+      "    'config' => [",
+      "        'type' => 'datetime',",
+      "        'format' => 'datetime',",
+      "        'default' => 0,",
+      "        'range' => [",
+      "            'upper' => mktime(0, 0, 0, 1, 1, 2038),",
+      "        ],",
+      "    ],",
+      "    'l10n_mode' => 'exclude',",
+      "    'l10n_display' => 'defaultAsReadonly',",
+      "],"
+    ],
+    "description": "TCA standard endtime field"
+  },
+
+  "TCA fe_group field": {
+    "prefix": "tcafegroup",
+    "body": [
+      "'fe_group' => [",
+      "    'exclude' => true,",
+      "    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.fe_group',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'selectMultipleSideBySide',",
+      "        'size' => 5,",
+      "        'maxitems' => 20,",
+      "        'items' => [",
+      "            ['label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.hide_at_login', 'value' => -1],",
+      "            ['label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.any_login', 'value' => -2],",
+      "            ['label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.usergroups', 'value' => '--div--'],",
+      "        ],",
+      "        'exclusiveKeys' => '-1,-2',",
+      "        'foreign_table' => 'fe_groups',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA standard fe_group field"
+  },
+
+  "TCA sys_category": {
+    "prefix": "tcasyscat",
+    "body": [
+      "'categories' => [",
+      "    'exclude' => true,",
+      "    'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.categories',",
+      "    'config' => [",
+      "        'type' => 'category',",
+      "        'relationship' => 'manyToMany',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA sys_category relation field"
+  },
+
+
+  // ─── MISC ────────────────────────────────────────────────────────────────────
+
   "TCA Display Condition": {
     "prefix": "tcadisplaycond",
     "body": [
       "'displayCond' => 'FIELD:${1:fieldName}:=:${2:1}',"
     ],
     "description": "TCA display condition"
+  },
+
+  "TCA l10n_mode": {
+    "prefix": "tcal10nmode",
+    "body": [
+      "'l10n_mode' => '${1|exclude,prefixLangTitle|}',"
+    ],
+    "description": "TCA l10n_mode for translation handling"
+  },
+
+  "TCA searchFields (ctrl)": {
+    "prefix": "tcasearchfields",
+    "body": [
+      "'searchFields' => '${1:title,description}',"
+    ],
+    "description": "TCA searchFields entry for ctrl"
+  },
+
+  "TCA security (ctrl)": {
+    "prefix": "tcasecurity",
+    "body": [
+      "'security' => [",
+      "    'ignoreWebMountRestriction' => ${1|false,true|},",
+      "    'ignoreRootLevelRestriction' => ${2|false,true|},",
+      "    'ignorePageTypeRestriction' => ${3|false,true|},",
+      "],"
+    ],
+    "description": "TCA security array for ctrl"
   },
 
   "TCA Universal (from tt_content)": {
@@ -529,4 +975,5 @@
     ],
     "description": "TCA field with config inherited from tt_content"
   }
+
 }
