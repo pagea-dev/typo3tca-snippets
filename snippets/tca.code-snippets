@@ -1,0 +1,532 @@
+{
+  "TCA Input": {
+    "prefix": "tcainput",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'input',",
+      "        'size' => ${4:30},",
+      "        'max' => ${5:255},",
+      "        'placeholder' => '${6:}',",
+      "        'default' => '${7:}',",
+      "        'required' => ${8|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA text input field"
+  },
+
+  "TCA Number": {
+    "prefix": "tcanumber",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'number',",
+      "        'default' => ${4:0},",
+      "        'range' => [",
+      "            'lower' => ${5:0},",
+      "            'upper' => ${6:9999},",
+      "        ],",
+      "        'required' => ${7|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA number field"
+  },
+
+  "TCA Number (Slider)": {
+    "prefix": "tcanumberslider",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'number',",
+      "        'default' => ${4:0},",
+      "        'range' => [",
+      "            'lower' => ${5:0},",
+      "            'upper' => ${6:100},",
+      "        ],",
+      "        'slider' => [",
+      "            'step' => ${7:1},",
+      "            'width' => ${8:200},",
+      "        ],",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA number field with slider"
+  },
+
+  "TCA Datetime": {
+    "prefix": "tcadatetime",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'datetime',",
+      "        'format' => '${4|datetime,date,time,timesec|}',",
+      "        'default' => 0,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA datetime field"
+  },
+
+  "TCA Email": {
+    "prefix": "tcaemail",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'email',",
+      "        'required' => ${4|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA email field"
+  },
+
+  "TCA Password": {
+    "prefix": "tcapassword",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'password',",
+      "        'passwordPolicy' => '${4:default}',",
+      "        'hashed' => ${5|true,false|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA password field"
+  },
+
+  "TCA Textarea": {
+    "prefix": "tcatextarea",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'text',",
+      "        'rows' => ${4:5},",
+      "        'cols' => ${5:30},",
+      "        'placeholder' => '${6:}',",
+      "        'default' => '${7:}',",
+      "        'required' => ${8|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA textarea field"
+  },
+
+  "TCA RTE": {
+    "prefix": "tcarte",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'text',",
+      "        'enableRichtext' => true,",
+      "        'richtextConfiguration' => '${4:default}',",
+      "        'rows' => ${5:5},",
+      "        'required' => ${6|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA Rich Text Editor field"
+  },
+
+  "TCA Slug": {
+    "prefix": "tcaslug",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'label' => '${2:label}',",
+      "    'config' => [",
+      "        'type' => 'slug',",
+      "        'generatorOptions' => [",
+      "            'fields' => ['${3:title}'],",
+      "            'fieldSeparator' => '/',",
+      "            'prefixParentPageSlug' => ${4|false,true|},",
+      "        ],",
+      "        'fallbackCharacter' => '-',",
+      "        'eval' => '${5|uniqueInSite,uniqueInPid|}',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA slug field"
+  },
+
+  "TCA Color": {
+    "prefix": "tcacolor",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'color',",
+      "        'required' => ${4|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA color picker field"
+  },
+
+  "TCA Link": {
+    "prefix": "tcalink",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'link',",
+      "        // 'allowedTypes' => ['page', 'url', 'record', 'file', 'email', 'telephone', 'folder'],",
+      "        'required' => ${4|false,true|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA link field"
+  },
+
+  "TCA JSON": {
+    "prefix": "tcajson",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'json',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA JSON editor field"
+  },
+
+  "TCA UUID": {
+    "prefix": "tcauuid",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'label' => '${2:label}',",
+      "    'config' => [",
+      "        'type' => 'uuid',",
+      "        'version' => ${3|4,6,7|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA UUID field"
+  },
+
+  "TCA Checkbox": {
+    "prefix": "tcacheck",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'check',",
+      "        'items' => [",
+      "            ['label' => '${4:Item Label}', 'value' => '${5:1}'],",
+      "        ],",
+      "        'default' => ${6:0},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA checkbox field"
+  },
+
+  "TCA Checkbox (cols)": {
+    "prefix": "tcacheckcols",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'check',",
+      "        'items' => [",
+      "            ['label' => 'Option 1', 'value' => '1'],",
+      "            ['label' => 'Option 2', 'value' => '2'],",
+      "            ['label' => 'Option 3', 'value' => '4'],",
+      "        ],",
+      "        'cols' => ${4:3},",
+      "        'default' => 0,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA checkbox field with multiple columns"
+  },
+
+  "TCA Checkbox (cols inline)": {
+    "prefix": "tcacheckcolsinline",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'check',",
+      "        'items' => [",
+      "            ['label' => 'Mo', 'value' => '1'],",
+      "            ['label' => 'Tu', 'value' => '2'],",
+      "            ['label' => 'We', 'value' => '4'],",
+      "            ['label' => 'Th', 'value' => '8'],",
+      "            ['label' => 'Fr', 'value' => '16'],",
+      "            ['label' => 'Sa', 'value' => '32'],",
+      "            ['label' => 'Su', 'value' => '64'],",
+      "        ],",
+      "        'cols' => 'inline',",
+      "        'default' => 0,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA checkbox field with inline columns"
+  },
+
+  "TCA Checkbox Toggle": {
+    "prefix": "tcachecktoggle",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'check',",
+      "        'renderType' => 'checkboxToggle',",
+      "        'items' => [",
+      "            [",
+      "                'label' => '',",
+      "                'labelChecked' => '${4:Enabled}',",
+      "                'labelUnchecked' => '${5:Disabled}',",
+      "                'invertStateDisplay' => ${6|false,true|},",
+      "            ],",
+      "        ],",
+      "        'default' => ${7|0,1|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA checkbox toggle"
+  },
+
+  "TCA Checkbox Labeled Toggle": {
+    "prefix": "tcachecklabeledtoggle",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'check',",
+      "        'renderType' => 'checkboxLabeledToggle',",
+      "        'items' => [",
+      "            [",
+      "                'label' => '${4:foo}',",
+      "                'labelChecked' => '${5:Enabled}',",
+      "                'labelUnchecked' => '${6:Disabled}',",
+      "                'invertStateDisplay' => ${7|false,true|},",
+      "            ],",
+      "        ],",
+      "        'default' => ${8|0,1|},",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA checkbox labeled toggle"
+  },
+
+  "TCA Select Single": {
+    "prefix": "tcaselectsingle",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'selectSingle',",
+      "        'items' => [",
+      "            ['label' => 'Label A', 'value' => '0'],",
+      "            ['label' => 'Label B', 'value' => '1'],",
+      "        ],",
+      "        'default' => '0',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA single select field with static items"
+  },
+
+  "TCA Select Multiple": {
+    "prefix": "tcaselectmulti",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'selectMultipleSideBySide',",
+      "        'items' => [",
+      "            ['label' => 'Label A', 'value' => '0'],",
+      "            ['label' => 'Label B', 'value' => '1'],",
+      "        ],",
+      "        'size' => 5,",
+      "        'maxitems' => 999,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA multi-select side-by-side field with static items"
+  },
+
+  "TCA Select Multiple (DB Relation)": {
+    "prefix": "tcaselectside",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'select',",
+      "        'renderType' => 'selectMultipleSideBySide',",
+      "        'foreign_table' => '${4:tx_myextension_domain_model_item}',",
+      "        'foreign_table_where' => 'AND {#${4}}.deleted = 0 AND {#${4}}.hidden = 0',",
+      "        'size' => 10,",
+      "        'maxitems' => 999,",
+      "        'autoSizeMax' => 10,",
+      "        'enableMultiSelectFilterTextfield' => true,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA multi-select side-by-side field with DB relation"
+  },
+
+  "TCA Category": {
+    "prefix": "tcacategory",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'category',",
+      "        'relationship' => '${4|manyToMany,oneToMany,manyToOne|}',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA category tree field"
+  },
+
+  "TCA FAL Image": {
+    "prefix": "tcafalimage",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'file',",
+      "        'maxitems' => ${4:1},",
+      "        'allowed' => 'common-image-types',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA FAL image field"
+  },
+
+  "TCA File": {
+    "prefix": "tcafile",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'file',",
+      "        'maxitems' => ${4:1},",
+      "        'allowed' => '${5|common-image-types,common-media-types,pdf,*|}',",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA FAL file field"
+  },
+
+  "TCA Group (DB Relation)": {
+    "prefix": "tcagroup",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'group',",
+      "        'allowed' => '${4:pages}',",
+      "        'size' => ${5:3},",
+      "        'maxitems' => ${6:50},",
+      "        'minitems' => 0,",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA group field (DB relation)"
+  },
+
+  "TCA Inline (IRRE)": {
+    "prefix": "tcainline",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'exclude' => true,",
+      "    'label' => '${2:label}',",
+      "    'description' => '${3:}',",
+      "    'config' => [",
+      "        'type' => 'inline',",
+      "        'foreign_table' => '${4:tx_myextension_domain_model_item}',",
+      "        'foreign_field' => '${5:parent}',",
+      "        'maxitems' => 9999,",
+      "        'appearance' => [",
+      "            'collapseAll' => true,",
+      "            'useSortable' => true,",
+      "            'showPossibleLocalizationRecords' => true,",
+      "            'showAllLocalizationLink' => true,",
+      "            'showSynchronizationLink' => true,",
+      "        ],",
+      "    ],",
+      "],"
+    ],
+    "description": "TCA inline (IRRE) field"
+  },
+
+  "TCA Display Condition": {
+    "prefix": "tcadisplaycond",
+    "body": [
+      "'displayCond' => 'FIELD:${1:fieldName}:=:${2:1}',"
+    ],
+    "description": "TCA display condition"
+  },
+
+  "TCA Universal (from tt_content)": {
+    "prefix": "tcauniversal",
+    "body": [
+      "'${1:fieldname}' => [",
+      "    'label' => '${2:label}',",
+      "    'config' => \\$GLOBALS['TCA']['tt_content']['columns']['${3:header}']['config'],",
+      "],"
+    ],
+    "description": "TCA field with config inherited from tt_content"
+  }
+}

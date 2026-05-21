@@ -1,0 +1,33 @@
+{
+  "name": "typo3tca-snippets",
+  "displayName": "TYPO3 TCA Snippets Extension",
+  "description": "TYPO3 TCA Snippets for VSCode/VSCodium",
+  "version": "1.0.0",
+  "publisher": "pagea-dev",
+  "icon": "images/icon.png",
+  "license": "MIT",
+  "keywords": [
+    "typo3",
+    "tca",
+    "snippets",
+    "php"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pagea-dev/typo3tca-snippets"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Snippets"
+  ],
+  "contributes": {
+    "snippets": [
+      {
+        "language": "php",
+        "path": "./snippets/tca.code-snippets"
+      }
+    ]
+  }
+}
